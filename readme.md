@@ -13,7 +13,7 @@ A simple browser-based Rock, Paper, Scissors game built with vanilla JavaScript 
 
 ## Live Demo
 
-[Live link: ]https://muhammadabdullah81.github.io/Javascript-rock-paper-scissors/
+Live link: https://muhammadabdullah81.github.io/Javascript-rock-paper-scissors/
 
 ## Project Structure
 
