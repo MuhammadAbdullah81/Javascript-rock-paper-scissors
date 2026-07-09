@@ -11,6 +11,10 @@ A simple browser-based Rock, Paper, Scissors game built with vanilla JavaScript 
 
 ![Rock Paper Scissors preview](./images/preview.jpg)
 
+## Live Demo
+
+[Live link: ]https://muhammadabdullah81.github.io/Javascript-rock-paper-scissors/
+
 ## Project Structure
 
 ```
