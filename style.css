@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --Gold-500: hsl(39, 89%, 49%);
+    --Gray-600: hsl(246, 11%, 37%);
+    --Blue-500: hsl(230, 89%, 62%);
+    --Red-600: hsl(349, 71%, 52%);
+    --background-color: radial-gradient(ellipse at top, hsl(214, 47%, 23%), hsl(237, 48%, 15%));
+    --Border-Option: hsla(0, 0%, 0%, 0.216);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+}
+
+body {
+    font-family: "Barlow Semi Condensed", sans-serif;
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100vw;
+    background: var(--background-color);
+}
+
+.wrapper {
+    height: 100%;
+    max-width: 68.75rem;
+    margin: 0 auto;
+    padding: 1rem;
+    gap: 4rem;
+}
+
+header {
+    width: 100%;
+    padding: 0.625rem;
+    display: flex;
+    justify-content: space-between;
+    border: 0.125rem solid var(--Gray-600);
+    border-radius: 0.625rem;
+    position: relative;
+    z-index: 5;
+}
+
+.wrapper,
+#score-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.inner-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#score-card {
+    aspect-ratio: 1;
+    padding: 0.3125rem;
+    background: hsl(0, 0%, 100%);
+    border-radius: 0.3125rem;
+    text-align: center;
+    justify-content: center;
+    gap: 0.3125rem;
+}
+
+#score-card #heading {
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--Blue-500);
+    letter-spacing: .125rem;
+    text-transform: uppercase;
+}
+
+#score-card #score {
+    font-size: 3rem;
+    color: var(--Gray-600);
+}
+
+/* User Selection */
+
+#options-container {
+    height: 17.375rem;
+    width: 19.5625rem;
+}
+
+#options-container #user-input {
+    height: 100%;
+    width: 100%;
+    background: url("./images/bg-triangle.svg");
+    position: relative;
+}
+
+.option {
+    height: 11.375rem;
+    width: 11.375rem;
+    padding: 1.2rem;
+    border-bottom: 0.5rem solid var(--Border-Option);
+    cursor: pointer;
+}
+
+.option .btn {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;
+    border-top: 0.5rem solid var(--Border-Option);
+}
+
+.option,
+.option .btn {
+    border-radius: 50%;
+}
+
+.option.paper {
+    background: var(--Blue-500);
+}
+
+.option.scissors {
+    background: var(--Gold-500);
+}
+
+.option.rock {
+    background: var(--Red-600);
+}
+
+#user-input>* {
+    position: absolute;
+}
+
+#user-input .option:first-child {
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -30%);
+}
+
+#user-input .option:nth-child(2) {
+    right: 0;
+    top: 0;
+    transform: translate(50%, -30%);
+}
+
+
+#user-input .option:last-child {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 30%);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Winner Selecting */
+
+#winner-container {
+    width: 100%;
+}
+
+.winner-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.winner-section h2 {
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: .125rem;
+    text-align: center;
+}
+
+.processing {
+    background: var(--Border-Option);
+    border: none;
+}
+
+.processing .btn {
+    display: none;
+}
+
+/* Button */
+
+button {
+    padding: 1rem 1.5rem;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background: transparent;
+    border: 0.0625rem solid #FFFFFF;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 300ms ease;
+
+    &:hover {
+        color: var(--Red-600);
+        background: #FFFFFF;
+    }
+}
+
+button#play-again {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+/* House Processing */
+
+.processing {
+    animation: processing 1s linear infinite alternate;
+}
+
+@keyframes processing {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.125);
+    }
+
+    100% {
+        transform: scale(1.25);
+    }
+}
+
+/* Winner */
+
+.winner {
+    position: relative;
+}
+
+.winner::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background: repeating-radial-gradient(ellipse at center, transparent 0%, transparent 10%, rgba(255, 255, 255, 0.023) 10%, rgba(255, 255, 255, 0.023) 20%);
+    animation: winner 1s linear infinite alternate;
+}
+
+@keyframes winner {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(2);
+    }
+}
